@@ -1,0 +1,21 @@
+<ion-content class="ion-padding">
+
+  <!-- <botao-voltar [routerLink]="['/auth']"></botao-voltar> -->
+<div class="botao-voltar" [routerLink]="['/auth']">
+  <ion-icon name="arrow-back-outline"></ion-icon>
+  <ion-text color="medium">
+  </ion-text>
+</div>
+  <topo-login title="Esqueci minha senha"></topo-login>
+
+  <div class="box-login">
+    <form [formGroup]="forgotForm" (submit)="recoverPass()">
+      <ion-item lines="none" class="bg-hidden" color="white">
+        <ion-icon name="mail-outline" slot="start"></ion-icon>
+          <ion-input formControlName="email" type="email" placeholder="E-mail" autofocus="true"></ion-input>
+      </ion-item>
+
+      <ion-button [disabled]="forgotForm.invalid" type="submit" expand="block" color="dark" fill="clear">Email de recuperação</ion-button>
+    </form>
+  </div>
+</ion-content>

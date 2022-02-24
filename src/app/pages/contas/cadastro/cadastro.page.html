@@ -1,0 +1,58 @@
+<ion-header>
+  <!-- <ion-toolbar> -->
+    <div class="header-contas">
+      <ion-title class="ios">Cadastro conta</ion-title>
+    </div>
+  <!-- </ion-toolbar> -->
+  <div class="line-contas"></div>
+</ion-header>
+<ion-content>
+
+<div class="box-contas">
+  <form [formGroup]="contasForm" (submit)="registraConta()">
+    <div class="box-parceiro">
+      <ion-item lines="none" class="bg-hidden" color="white">
+        <ion-icon name="person-outline" slot="start"></ion-icon>
+        <ion-input formControlName="parceiro" type="parceiro" placeholder="Parceiro Comercial" autofocus="true"></ion-input>
+      </ion-item>
+    </div>
+
+    <div class="line-divisao"></div>
+
+    <div class="box-descricao">
+      <ion-item lines="none" class="bg-hidden" color="white">
+        <ion-icon name="document-outline" slot="start"></ion-icon>
+        <ion-input formControlName="descricao" placeholder="Descrição"></ion-input>
+      </ion-item>
+
+      <ion-item lines="none" class="bg-hidden" color="white">
+        <ion-icon name="wallet-outline" slot="start"></ion-icon>
+        <ion-input formControlName="valor" type="number" placeholder="Valor"></ion-input>
+      </ion-item>
+
+      <ion-radio-group formControlName="tipo">
+        <ion-item lines="none" class="bg-hidden" color="white">
+          <ion-label>A pagar</ion-label>
+          <ion-radio slot="start" class="radio-icon-circle" value="pagar"></ion-radio>
+        </ion-item>
+      
+        <ion-item lines="none" class="bg-hidden" color="white">
+          <ion-label>A receber</ion-label>
+          <ion-radio slot="start" class="radio-icon-circle" value="receber"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+      <br>
+  </div>
+    <ion-button [disabled]="contasForm.invalid" type="submit" expand="block" color="dark" fill="clear">Registrar</ion-button>
+  </form>
+</div>
+</ion-content>
+<ion-footer >
+  <ion-toolbar>
+    <ion-icon class="footer-content" name="home-outline" slot="start" [routerLink]="['/home']"></ion-icon>
+    <ion-icon class="footer-content" name="push-outline" slot="start" [routerLink]="['/contas/pagar']"></ion-icon>
+    <ion-icon class="footer-content" name="download-outline" slot="end" [routerLink]="['/contas/receber']"></ion-icon>
+    <ion-icon class="footer-content" name="duplicate" slot="end" [routerLink]="['/contas/cadastro']"></ion-icon>
+    <!-- <ion-icon class="footer-content" name="log-out-outline" slot="end"></ion-icon> -->
+  </ion-toolbar>
+</ion-footer>

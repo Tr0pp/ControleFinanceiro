@@ -1,0 +1,75 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      iFinanças
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-header collapse="condense">
+  <ion-toolbar>
+    <ion-title size="large">iFinanças</ion-title>
+    <botao-logout (click)="logout()"></botao-logout>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="false"  force-overscroll='false'>
+  <!-- <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">iFinanças</ion-title>
+      <botao-logout (click)="logout()"></botao-logout>
+    </ion-toolbar>
+  </ion-header> -->
+
+  <ion-app>
+    <div class="contas-total">
+      <ion-toolbar class="bg-hidden" color="white">
+        <h3 class="controle">Seu controle</h3>
+        <div class="line-divisao"></div>
+        <ion-item class="bg-hidden" color="white" lines="none">
+          <h5 class="totais">Total a receber</h5>
+          <p slot="end" class="valor-total">{{valoresReceber | currency:'BRL':true:'1.2-2'}}</p>
+        </ion-item>
+        <ion-item class="bg-hidden" color="white" lines="none">
+          <h5 class="totais">Total gasto</h5>
+          <p slot="end" class="valor-total">{{valoresPagar | currency:'BRL':true:'1.2-2'}}</p>
+        </ion-item>
+
+        <ion-item class="bg-hidden" color="white" lines="none">
+          <h5 class="totais">Saldo</h5>
+          <p slot="end" class="valor-total">{{saldo | currency:'BRL':true:'1.2-2'}}</p>
+        </ion-item>
+      </ion-toolbar>
+    </div>
+    <!-- <div class="line-divisao"></div> -->
+  </ion-app>
+    <!-- <div class="cadastrar-contas">  
+      <ion-button color="light" size="large" class="button-home" expand="block" [routerLink]="['/contas/cadastro']">Cadastrar contas</ion-button>
+      <ion-button color="light" size="large" class="button-home" expand="block" [routerLink]="['/contas/pagar']">Minhas contas a pagar</ion-button>
+      <ion-button color="light" size="large" class="button-home" expand="block" [routerLink]="['/contas/receber']">Minhas contas a receber</ion-button>
+      <ion-button color="light" size="large" class="button-home" expand="block" [routerLink]="['/contas/relatorio']">Relatório</ion-button>
+    </div> -->
+
+  </ion-content>
+  
+  
+  <ion-content> 
+    <div class="box-contas">
+      <ion-list class="bg-hidden" color="white">
+        <ion-item *ngFor="let conta of listaContas" class="bg-hidden" color="white">
+          <h5 class="parceiro">{{conta.parceiro}}</h5>
+          <p class="desc">{{conta.descricao}}</p>
+          <p *ngIf="conta.tipo == 'pagar'" class="valor vpagar">- {{conta.valor | currency:'BRL':true:'1.2-2'}}</p>
+          <p *ngIf="conta.tipo == 'receber'" class="valor vreceber">+ {{conta.valor | currency:'BRL':true:'1.2-2'}}</p>
+        </ion-item>
+      </ion-list>
+    </div>
+  </ion-content>
+<ion-footer >
+  <ion-toolbar>
+    <ion-icon class="footer-content" name="home" slot="start" [routerLink]="['/home']"></ion-icon>
+    <ion-icon class="footer-content" name="push-outline" slot="start" [routerLink]="['/contas/pagar']"></ion-icon>
+    <ion-icon class="footer-content" name="download-outline" slot="end" [routerLink]="['/contas/receber']"></ion-icon>
+    <ion-icon class="footer-content" name="duplicate-outline" slot="end" [routerLink]="['/contas/cadastro']"></ion-icon>
+  </ion-toolbar>
+</ion-footer>

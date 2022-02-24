@@ -1,0 +1,49 @@
+<ion-content class="ion-padding">
+  <!-- <botao-voltar [routerLink]="['/auth']"></botao-voltar> -->
+  <div class="botao-voltar" [routerLink]="['/auth']">
+    <ion-icon name="arrow-back-outline"></ion-icon>
+    <ion-text color="medium">
+    </ion-text>
+  </div>
+  <topo-login title="Criar novo usuário"></topo-login>
+
+  <div class="box-register">
+    <form [formGroup]="registerForm" (submit)="createUser()">
+      <div class="email-user">
+        <ion-item lines="none" class="bg-hidden" color="white">
+          <ion-icon name="mail-outline" slot="start"></ion-icon>
+            <ion-input formControlName="email" type="email" placeholder="E-mail" autofocus="true"></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="line-divisao"></div>
+
+      <div class="nome-user">
+        <ion-item lines="none" class="bg-hidden" color="white">
+          <ion-icon name="person-outline" slot="start"></ion-icon>
+            <ion-input formControlName="nome" type="text" placeholder="Nome" autofocus="true"></ion-input>
+        </ion-item>
+
+        <ion-item lines="none" class="bg-hidden" color="white">
+          <ion-icon  slot="start"></ion-icon>
+            <ion-input formControlName="snome" type="text" placeholder="Sobrenome" autofocus="true"></ion-input>
+        </ion-item>
+      </div>
+      
+      <div class="line-divisao"></div>
+      
+      <div class="pass-user">
+        <ion-item lines="none"  class="bg-hidden" color="white">
+          <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+          <ion-input formControlName="password" type="password" placeholder="Senha"></ion-input>
+        </ion-item>
+        
+        <ion-item lines="none"  class="bg-hidden" color="white">
+          <ion-icon  slot="start"></ion-icon>
+          <ion-input formControlName="confirm_pass" type="password" placeholder="Repetir Senha"></ion-input>
+        </ion-item>
+      </div>
+      <ion-button [disabled]="registerForm.invalid" type="submit" expand="block" color="dark" fill="clear">Cadastrar-se</ion-button>
+    </form>
+  </div>
+</ion-content>
